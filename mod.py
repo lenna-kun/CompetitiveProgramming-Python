@@ -23,3 +23,16 @@ def comb(fact, rfact, n, k):
 # nHk (mod MOD)
 def homb(fact, rfact, n, k):
   return comb(fact, rfact, n+k-1, k)
+
+def euler_phi(n):
+  res = n
+  for i in range(2, n+1):
+    if i**2 > n:
+      break
+    if n%i == 0:
+      res -= res//i
+      while n%i == 0:
+        n //= i
+  if n > 1:
+    res -= res//n
+  return res
